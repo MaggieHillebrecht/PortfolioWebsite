@@ -38,7 +38,7 @@ export default function Footer() {
             href="https://github.com/MagPie0"
           >
             <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
+            <p className="ml-2 h-7">Github</p>
           </a>
         </li>
         <li>
