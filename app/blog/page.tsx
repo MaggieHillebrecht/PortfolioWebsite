@@ -1,8 +1,8 @@
 import { BlogPosts } from 'app/components/posts'
 
 export const metadata = {
-  title: 'Blog',
-  description: 'Read my blog.',
+  title: 'Portfolio',
+  description: 'View my Game Portfolio',
 }
 
 export default function Page() {
