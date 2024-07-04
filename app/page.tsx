@@ -7,7 +7,8 @@ export default function Page() {
         Maggie Hillebrecht
       </h1>
       <p className="mb-4">
-        {`Hi! Testing once again`}
+        {`I am a student at Chapman University and currently majoring in Computer Science with a minor in Game Development Programming.
+          I found my passion for game development and programming through making Cosmic Breakfast Adventures when I was in 8th grade using scratch programming.`}
       </p>
       <div className="my-8">
         <BlogPosts />
