@@ -1,13 +1,12 @@
-import fs from 'fs'
-import path from 'path'
-import { getBlogPosts, Metadata } from 'app/blog/utils'
+import fs from 'fs';
+import path from 'path';
 
 type Metadata = {
-  title: string
-  publishedAt: string
-  summary: string
-  image?: string
-  tags: string[]
+  title: string;
+  publishedAt: string;
+  summary: string;
+  image?: string;
+  tags: string[];
 };
 
 function parseFrontmatter(fileContent: string) {
