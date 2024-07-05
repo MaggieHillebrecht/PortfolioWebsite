@@ -10,6 +10,9 @@ const navItems = {
   'https://vercel.com/templates/next.js/portfolio-starter-kit': {
     name: 'projects',
   },
+  'youtube.com': {
+    name: 'future projects',
+  },
 }
 
 export function Navbar() {
