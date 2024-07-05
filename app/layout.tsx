@@ -23,15 +23,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
-  description: 'These are my projects.',
-  openGraph: {
-    title: 'Projects',
-    description: 'These are my projects.',
-    url: baseUrl,
-    siteName: 'Projects',
-    locale: 'en_US',
-    type: 'website',
-  },
   robots: {
     index: true,
     follow: true,
