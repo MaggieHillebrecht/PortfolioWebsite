@@ -14,8 +14,14 @@ export default function Page() {
         />
       </h1>
       <p className="mb-4">
-        I am a student at Chapman University and currently majoring in Computer Science with a minor in Game Development Programming. <br /> <br />
-        I found my passion for game development and programming through making Cosmic Breakfast Adventures when I was in 8th grade using scratch programming.
+        Hi! My name is Margaret but you can call me Maggie. 
+        I am currently a senior at Chapman University, majoring in Computer Science and minoring 
+        in Game Development Programming. I am a first generation University student and transferred 
+        from Santiago Canyon College. I am constantly working on projects so feel free to message me and ask what I might be working on!
+        <br /> <br />
+        I grew up playing video games with my cousins since I was 7 
+        and have been passionate about the gaming world ever since. Some of my other 
+        hobbies are cooking/baking for my friends and family, and gardening.
       </p>
     </section>
   )
