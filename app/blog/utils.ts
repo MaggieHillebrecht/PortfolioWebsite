@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { getBlogPosts, Metadata } from 'app/blog/utils'
 
 type Metadata = {
   title: string
