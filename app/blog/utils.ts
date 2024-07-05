@@ -15,12 +15,14 @@ function parseFrontmatter(fileContent: string) {
   let frontMatterBlock = match![1];
   let content = fileContent.replace(frontmatterRegex, '').trim();
   let frontMatterLines = frontMatterBlock.trim().split('\n');
-  let metadata: Partial<Metadata> = {};
+  let metadata: Partial<Metadata> = {
+    tags: [],
+  };
 
   frontMatterLines.forEach((line) => {
     let [key, ...valueArr] = line.split(': ');
     let value = valueArr.join(': ').trim();
-    value = value.replace(/^['"](.*)['"]$/, '$1'); 
+    value = value.replace(/^['"](.*)['"]$/, '$1');
 
     if (key.trim() === 'tags') {
       metadata[key.trim() as keyof Metadata] = value.split(',').map(tag => tag.trim());
@@ -32,6 +34,15 @@ function parseFrontmatter(fileContent: string) {
   return { metadata: metadata as Metadata, content };
 }
 
+function getMDXFiles(dir: string) {
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
+}
+
+function readMDXFile(filePath: string) {
+  let rawContent = fs.readFileSync(filePath, 'utf-8');
+  return parseFrontmatter(rawContent);
+}
+
 function getMDXData(dir: string) {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
@@ -41,7 +52,7 @@ function getMDXData(dir: string) {
     return {
       metadata: {
         ...metadata,
-        tags: metadata.tags || [], 
+        tags: metadata.tags || [], // Ensure tags array exists
       },
       slug,
       content,
@@ -49,27 +60,8 @@ function getMDXData(dir: string) {
   });
 }
 
-function readMDXFile(filePath) {
-  let rawContent = fs.readFileSync(filePath, 'utf-8')
-  return parseFrontmatter(rawContent)
-}
-
-function getMDXData(dir) {
-  let mdxFiles = getMDXFiles(dir)
-  return mdxFiles.map((file) => {
-    let { metadata, content } = readMDXFile(path.join(dir, file))
-    let slug = path.basename(file, path.extname(file))
-
-    return {
-      metadata,
-      slug,
-      content,
-    }
-  })
-}
-
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
+  return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'));
 }
 
 export function formatDate(date: string, includeRelative = false) {
