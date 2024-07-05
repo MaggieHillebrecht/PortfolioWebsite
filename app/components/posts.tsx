@@ -12,8 +12,7 @@ export function BlogPosts() {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            passHref
-          >
+            passHref >
             <a className="flex flex-col space-y-1 mb-4">
               <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2 items-center">
                 <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
@@ -26,8 +25,7 @@ export function BlogPosts() {
                   {post.metadata.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs px-2 py-1 bg-gray-200 text-gray-800 rounded-md"
-                    >
+                      className="text-xs px-2 py-1 bg-gray-200 text-gray-800 rounded-md">
                       {tag}
                     </span>
                   ))}
