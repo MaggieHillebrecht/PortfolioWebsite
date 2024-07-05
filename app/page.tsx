@@ -9,8 +9,8 @@ export default function Page() {
         <Image
           src="https://i.postimg.cc/sxf7LDpM/IMG-3621.jpg"
           alt="Picture of me :D"
-          width={200}
-          height={200}
+          width={300}
+          height={300}
         />
       </h1>
       <p className="mb-4">
