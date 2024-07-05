@@ -17,7 +17,7 @@ export default function Page() {
         Hi! My name is Margaret but you can call me Maggie. 
         I am currently a senior at Chapman University, majoring in Computer Science and minoring 
         in Game Development Programming. I am a first generation University student and transferred 
-        from Santiago Canyon College. I am constantly working on projects so feel free to message me and ask what I might be working on!
+        from Santiago Canyon College. I am constantly working on projects so feel free to contact me and ask what I might be working on!
         <br /> <br />
         I grew up playing video games with my cousins since I was 7 
         and have been passionate about the gaming world ever since. Some of my other 
