@@ -1,20 +1,19 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/blog/utils'
-import { baseUrl } from 'app/sitemap'
+import { notFound } from 'next/navigation';
+import { CustomMDX } from 'app/components/mdx';
+import { formatDate, getBlogPosts, Metadata } from 'path/to/your/getBlogPosts'; // Adjust path as per your project structure
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts()
+  let posts = getBlogPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
-  }))
+  }));
 }
 
 export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
   if (!post) {
-    return
+    return;
   }
 
   let {
@@ -22,10 +21,10 @@ export function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
-  } = post.metadata
+  } = post.metadata;
   let ogImage = image
     ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -48,14 +47,14 @@ export function generateMetadata({ params }) {
       description,
       images: [ogImage],
     },
-  }
+  };
 }
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug)
+  let post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -93,6 +92,13 @@ export default function Blog({ params }) {
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
+      <div className="flex mt-4">
+        {post.metadata.tags.map((tag, index) => (
+          <span key={index} className="mr-2 text-sm bg-gray-200 px-2 py-1 rounded-md">
+            {tag}
+          </span>
+        ))}
+      </div>
     </section>
-  )
+  );
 }
