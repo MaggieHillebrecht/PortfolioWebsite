@@ -10,7 +10,7 @@ const navItems = {
   'https://vercel.com/templates/next.js/portfolio-starter-kit': {
     name: 'projects',
   },
-  'youtube.com': {
+  'https://hillebrecht2.wixsite.com/my-site/projects-6': {
     name: 'future projects',
   },
 }
