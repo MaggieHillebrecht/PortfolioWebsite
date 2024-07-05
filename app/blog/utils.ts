@@ -6,28 +6,47 @@ type Metadata = {
   publishedAt: string
   summary: string
   image?: string
+  tags: string[]
 }
 
 function parseFrontmatter(fileContent: string) {
-  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
-  let match = frontmatterRegex.exec(fileContent)
-  let frontMatterBlock = match![1]
-  let content = fileContent.replace(frontmatterRegex, '').trim()
-  let frontMatterLines = frontMatterBlock.trim().split('\n')
-  let metadata: Partial<Metadata> = {}
+  let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
+  let match = frontmatterRegex.exec(fileContent);
+  let frontMatterBlock = match![1];
+  let content = fileContent.replace(frontmatterRegex, '').trim();
+  let frontMatterLines = frontMatterBlock.trim().split('\n');
+  let metadata: Partial<Metadata> = {};
 
   frontMatterLines.forEach((line) => {
-    let [key, ...valueArr] = line.split(': ')
-    let value = valueArr.join(': ').trim()
-    value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value
-  })
+    let [key, ...valueArr] = line.split(': ');
+    let value = valueArr.join(': ').trim();
+    value = value.replace(/^['"](.*)['"]$/, '$1'); 
 
-  return { metadata: metadata as Metadata, content }
+    if (key.trim() === 'tags') {
+      metadata[key.trim() as keyof Metadata] = value.split(',').map(tag => tag.trim());
+    } else {
+      metadata[key.trim() as keyof Metadata] = value;
+    }
+  });
+
+  return { metadata: metadata as Metadata, content };
 }
 
-function getMDXFiles(dir) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx')
+function getMDXData(dir: string) {
+  let mdxFiles = getMDXFiles(dir);
+  return mdxFiles.map((file) => {
+    let { metadata, content } = readMDXFile(path.join(dir, file));
+    let slug = path.basename(file, path.extname(file));
+
+    return {
+      metadata: {
+        ...metadata,
+        tags: metadata.tags || [], 
+      },
+      slug,
+      content,
+    };
+  });
 }
 
 function readMDXFile(filePath) {
