@@ -1,20 +1,20 @@
-import { notFound } from 'next/navigation';
-import { CustomMDX } from 'app/components/mdx';
-import { formatDate } from 'app/blog/utils'; 
-import { getBlogPosts, Metadata } from 'app/blog/utils'; 
+import { notFound } from 'next/navigation'
+import { CustomMDX } from 'app/components/mdx'
+import { formatDate, getBlogPosts } from 'app/blog/utils'
+import { baseUrl } from 'app/sitemap'
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  let posts = getBlogPosts()
 
   return posts.map((post) => ({
     slug: post.slug,
-  }));
+  }))
 }
 
 export function generateMetadata({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = getBlogPosts().find((post) => post.slug === params.slug)
   if (!post) {
-    return;
+    return
   }
 
   let {
@@ -22,10 +22,10 @@ export function generateMetadata({ params }) {
     publishedAt: publishedTime,
     summary: description,
     image,
-  } = post.metadata;
+  } = post.metadata
   let ogImage = image
     ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+    : ${baseUrl}/og?title=${encodeURIComponent(title)}
 
   return {
     title,
@@ -35,7 +35,7 @@ export function generateMetadata({ params }) {
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      url: ${baseUrl}/blog/${post.slug},
       images: [
         {
           url: ogImage,
@@ -48,14 +48,14 @@ export function generateMetadata({ params }) {
       description,
       images: [ogImage],
     },
-  };
+  }
 }
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = getBlogPosts().find((post) => post.slug === params.slug)
 
   if (!post) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -72,9 +72,9 @@ export default function Blog({ params }) {
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
             image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/blog/${post.slug}`,
+              ? ${baseUrl}${post.metadata.image}
+              : /og?title=${encodeURIComponent(post.metadata.title)},
+            url: ${baseUrl}/blog/${post.slug},
             author: {
               '@type': 'Person',
               name: 'My Portfolio',
@@ -93,13 +93,6 @@ export default function Blog({ params }) {
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
-      <div className="flex mt-4">
-        {post.metadata.tags.map((tag, index) => (
-          <span key={index} className="mr-2 text-sm bg-gray-200 px-2 py-1 rounded-md">
-            {tag}
-          </span>
-        ))}
-      </div>
     </section>
-  );
+  )
 }
