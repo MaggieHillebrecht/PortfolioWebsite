@@ -7,7 +7,7 @@ export default function Page() {
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         Maggie Hillebrecht
         <Image
-          src="https://postimg.cc/VrTJrwZw"
+          src="https://i.postimg.cc/sxf7LDpM/IMG-3621.jpg"
           alt="Picture of me :D"
           width={200}
           height={200}
