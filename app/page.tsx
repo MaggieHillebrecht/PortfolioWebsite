@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        Maggie Hillebrecht
+        <span className="mr-4">Maggie Hillebrecht</span>
         <Image
           src="https://i.postimg.cc/sxf7LDpM/IMG-3621.jpg"
           alt="Picture of me :D"
