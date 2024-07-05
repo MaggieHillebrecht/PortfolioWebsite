@@ -5,13 +5,15 @@ export default function Page() {
   return (
     <section>
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        <span className="mr-4">Maggie Hillebrecht</span>
-        <Image
-          src="https://i.postimg.cc/W4sPyh9m/IMG-3621.jpg"
-          alt="Picture of me :D"
-          width={300}
-          height={300}
-        />
+        <div className="flex items-center">
+          <span className="mr-4">Maggie Hillebrecht</span>
+          <Image
+            src="https://i.postimg.cc/W4sPyh9m/IMG-3621.jpg"
+            alt="Picture of me :D"
+            width={300}
+            height={300}
+          />
+        </div>
       </h1>
       <p className="mb-4">
         Hi! My name is Margaret but you can call me Maggie. 
