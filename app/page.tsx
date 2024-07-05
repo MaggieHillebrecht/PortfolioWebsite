@@ -24,9 +24,9 @@ export default function Page() {
         hobbies are cooking/baking for my friends and family, and gardening. I also love my cat Ella
         <br />
                            ╱|、
-                          (˚ˎ 。7  
-                           |、˜〵          
-                          じしˍ,)ノ
+        <br />            (˚ˎ 。7  
+        <br />            |、˜〵          
+        <br />            じしˍ,)ノ
       </p>
     </section>
   )
