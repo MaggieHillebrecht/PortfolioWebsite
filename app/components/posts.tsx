@@ -1,4 +1,5 @@
 import { BlogPosts } from 'app/components/posts';
+import { getBlogPosts, Metadata } from 'path/to/your/getBlogPosts'; // Ensure correct path to your function
 
 export default function Page() {
   const blogPosts = getBlogPosts();
@@ -22,4 +23,3 @@ export default function Page() {
     </section>
   );
 }
-
