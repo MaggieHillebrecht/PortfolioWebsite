@@ -56,7 +56,7 @@ export function getBlogPosts() {
 export function formatDate(date: string, includeRelative = false) {
   let currentDate = new Date()
   if (!date.includes('T')) {
-    date = ${date}T00:00:00
+    date = `${date}T00:00:00`
   }
   let targetDate = new Date(date)
 
@@ -67,11 +67,11 @@ export function formatDate(date: string, includeRelative = false) {
   let formattedDate = ''
 
   if (yearsAgo > 0) {
-    formattedDate = ${yearsAgo}y ago
+    formattedDate = `${yearsAgo}y ago`
   } else if (monthsAgo > 0) {
-    formattedDate = ${monthsAgo}mo ago
+    formattedDate = `${monthsAgo}mo ago`
   } else if (daysAgo > 0) {
-    formattedDate = ${daysAgo}d ago
+    formattedDate = `${daysAgo}d ago`
   } else {
     formattedDate = 'Today'
   }
@@ -86,5 +86,5 @@ export function formatDate(date: string, includeRelative = false) {
     return fullDate
   }
 
-  return ${fullDate} (${formattedDate})
+  return `${fullDate} (${formattedDate})`
 }
