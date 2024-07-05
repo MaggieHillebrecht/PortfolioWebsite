@@ -7,7 +7,7 @@ const navItems = {
   '/blog': {
     name: 'portfolio',
   },
-  'https://vercel.com/templates/next.js/portfolio-starter-kit': {
+  'https://hillebrecht2.wixsite.com/my-site/projects': {
     name: 'projects',
   },
   'https://hillebrecht2.wixsite.com/my-site/projects-6': {
