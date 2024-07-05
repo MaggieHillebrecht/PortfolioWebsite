@@ -19,9 +19,14 @@ export default function Page() {
         in Game Development Programming. I am a first generation University student and transferred 
         from Santiago Canyon College. I am constantly working on projects so feel free to contact me and ask what I might be working on!
         <br /> <br />
-        I grew up playing video games with my cousins since I was 7 
+        I grew up playing video games with my cousins when I was 6 
         and have been passionate about the gaming world ever since. Some of my other 
-        hobbies are cooking/baking for my friends and family, and gardening.
+        hobbies are cooking/baking for my friends and family, and gardening. I also love my cat Ella
+        <br />
+                           ╱|、
+                          (˚ˎ 。7  
+                           |、˜〵          
+                          じしˍ,)ノ
       </p>
     </section>
   )
