@@ -7,7 +7,7 @@ export default function Page() {
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         <span className="mr-4">Maggie Hillebrecht</span>
         <Image
-          src="https://i.postimg.cc/sxf7LDpM/IMG-3621.jpg"
+          src="https://i.postimg.cc/W4sPyh9m/IMG-3621.jpg"
           alt="Picture of me :D"
           width={300}
           height={300}
