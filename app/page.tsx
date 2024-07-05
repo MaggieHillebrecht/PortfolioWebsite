@@ -21,12 +21,7 @@ export default function Page() {
         <br /> <br />
         I grew up playing video games with my cousins when I was 6 
         and have been passionate about the gaming world ever since. Some of my other 
-        hobbies are cooking/baking for my friends and family, and gardening. I also love my cat Ella
-        <br />
-                           ╱|、
-        <br />            (˚ˎ 。7  
-        <br />            |、˜〵          
-        <br />            じしˍ,)ノ
+        hobbies are cooking/baking for my friends and family, and gardening.
       </p>
     </section>
   )
