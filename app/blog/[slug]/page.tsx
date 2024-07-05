@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
-import { formatDate, getBlogPosts, Metadata } from 'path/to/your/getBlogPosts'; // Adjust path as per your project structure
+import { formatDate, getBlogPosts, Metadata } from 'app/blog/utils'; // Adjust this path based on your actual project structure
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
