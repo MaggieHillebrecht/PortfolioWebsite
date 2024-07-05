@@ -7,7 +7,7 @@ type Metadata = {
   summary: string
   image?: string
   tags: string[]
-}
+};
 
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
