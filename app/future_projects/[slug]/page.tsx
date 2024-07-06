@@ -12,7 +12,7 @@ export async function getStaticPaths() {
         slug: post.slug,
       },
     })),
-    fallback: false, // or 'blocking' if you want to use Incremental Static Regeneration
+    fallback: false, 
   };
 }
 
