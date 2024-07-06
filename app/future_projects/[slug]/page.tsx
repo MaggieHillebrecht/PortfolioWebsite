@@ -1,41 +1,38 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getFutureProjects } from 'app/future_projects/utils'
-import { baseUrl } from 'app/sitemap'
+import { notFound } from 'next/navigation';
+import { CustomMDX } from 'app/components/mdx';
+import { formatDate, getFutureProjects } from 'app/future_projects/utils';
+import { baseUrl } from 'app/sitemap';
 
 export async function generateStaticParams() {
-  let posts = getFutureProjects()
+  let posts = getFutureProjects();
 
   return posts.map((post) => ({
-    slug: post.slug,
-  }))
+    params: {
+      slug: post.slug,
+    },
+  }));
 }
 
 export function generateMetadata({ params }) {
-  let post = getFutureProjects().find((post) => post.slug === params.slug)
+  let post = getFutureProjects().find((post) => post.slug === params.slug);
   if (!post) {
-    return
+    return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata
+  let { title, publishedAt, summary, image } = post.metadata;
   let ogImage = image
-    ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+    ? `${baseUrl}${image}`
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
-    description,
+    description: summary,
     openGraph: {
       title,
-      description,
+      description: summary,
       type: 'article',
-      publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
+      publishedTime: publishedAt,
+      url: `${baseUrl}/future_projects/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -45,17 +42,18 @@ export function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: summary,
       images: [ogImage],
     },
-  }
+  };
 }
 
 export default function FutureProjects({ params }) {
-  let post = getFutureProjects().find((post) => post.slug === params.slug)
+  let post = getFutureProjects().find((post) => post.slug === params.slug);
 
   if (!post) {
-    notFound()
+    notFound(); // Return 404 if post is not found
+    return null; // Ensure to return null or a loading state if necessary
   }
 
   return (
@@ -73,7 +71,7 @@ export default function FutureProjects({ params }) {
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+              : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/future_projects/${post.slug}`,
             author: {
               '@type': 'Person',
@@ -94,5 +92,5 @@ export default function FutureProjects({ params }) {
         <CustomMDX source={post.content} />
       </article>
     </section>
-  )
+  );
 }
