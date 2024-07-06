@@ -1,4 +1,4 @@
-import { ProjectPost } from 'app/components/posts'
+import { ProjectPosts } from 'app/components/posts'
 
 export const metadata = {
   title: 'Portfolio',
