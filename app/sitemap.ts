@@ -1,23 +1,17 @@
-// app/sitemap.ts
+import { getBlogPosts } from 'app/Portfolio/utils'
 
-import { generateSitemapData } from './utils'; // Adjust the import path as per your actual project structure
+export const baseUrl = 'https://portfolio-blog-starter.vercel.app'
 
-const generateSitemapXml = async () => {
-  const data = await generateSitemapData();
+export default async function sitemap() {
+  let blogs = getBlogPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.metadata.publishedAt,
+  }))
 
-  const xml = `
-    <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${data.map(entry => `
-        <url>
-          <loc>${entry.url}</loc>
-          <lastmod>${entry.lastModified}</lastmod>
-        </url>
-      `).join('')}
-    </urlset>
-  `;
+  let routes = ['', '/blog'].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
 
-  return xml;
-};
-
-export default generateSitemapXml;
+  return [...routes, ...blogs]
+}
