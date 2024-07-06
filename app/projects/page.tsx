@@ -13,7 +13,7 @@ export default function Page() {
         Here are some projects I have worked on that showcase my range of skills. From programming to leadership and teamwork:
       </p>
       <div>
-        <BlogPosts />
+        <ProjectPosts />
       </div>
     </section>
   )

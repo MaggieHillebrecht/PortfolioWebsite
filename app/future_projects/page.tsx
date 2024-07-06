@@ -11,7 +11,7 @@ export default function Page() {
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Future Projects</h1>
       <p>I constantly are writing down ideas for fully fledged games, game mechanics, levels designs, and programs.
         However, these are a few that I am currently working on in my spare time:</p>
-      <BlogPosts />
+      <FutureProjectPosts />
     </section>
   )
 }
