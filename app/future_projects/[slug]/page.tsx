@@ -1,66 +1,33 @@
-// pages/future_projects/[slug].tsx
-
-import { notFound } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { CustomMDX } from 'app/components/mdx';
 import { formatDate, getFutureProjects } from 'app/future_projects/utils';
 import { baseUrl } from 'app/sitemap';
 
-export async function getServerSideProps({ params }) {
+export async function getStaticPaths() {
   let posts = getFutureProjects();
-  let post = posts.find((post) => post.slug === params.slug);
-
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
-
-  let { title, publishedAt, summary, image } = post.metadata;
-  let ogImage = image
-    ? `${baseUrl}${image}`
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+  let paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
 
   return {
-    props: {
-      post: {
-        metadata: {
-          title,
-          publishedAt,
-          summary,
-          image,
-        },
-        slug: post.slug,
-        content: post.content,
-      },
-      meta: {
-        title,
-        description: summary,
-        openGraph: {
-          title,
-          description: summary,
-          type: 'article',
-          publishedTime: publishedAt,
-          url: `${baseUrl}/future_projects/${post.slug}`,
-          images: [
-            {
-              url: ogImage,
-            },
-          ],
-        },
-        twitter: {
-          card: 'summary_large_image',
-          title,
-          description: summary,
-          images: [ogImage],
-        },
-      },
-    },
+    paths,
+    fallback: false,
   };
 }
 
 export default function FutureProjectPage({ post }) {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false); // Simulate loading state, you can fetch data here
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state if data is being fetched
+  }
+
   if (!post) {
-    return <div>Loading...</div>; // Handle loading state if necessary
+    return <div>Post not found</div>; // Handle case where post is not found
   }
 
   return (
