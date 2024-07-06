@@ -10,7 +10,7 @@ const navItems = {
   '/projects': {
     name: 'projects',
   },
-  'future_projects': {
+  '/future_projects': {
     name: 'future projects',
   },
 }
