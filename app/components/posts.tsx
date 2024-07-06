@@ -1,11 +1,14 @@
 import Link from 'next/link';
+import { Metadata } from './types'; 
 import { formatDate as formatDateBlog } from 'app/Portfolio/utils';
 import { formatDate as formatDateProjects } from 'app/projects/utils';
 import { formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
-export function getSortedPosts(getPostsFunction) {
+export function getSortedPosts(getPostsFunction: () => SomePostType[]) {
   let allPosts = getPostsFunction();
-  return allPosts.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
+  return allPosts.sort((a: SomePostType, b: SomePostType) =>
+    new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
+  );
 }
 
 export function BlogPosts() {
