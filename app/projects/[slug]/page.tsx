@@ -4,7 +4,7 @@ import { formatDate, getProjects } from 'app/projects/utils'
 import { baseUrl } from 'app/sitemap'
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts()
+  let posts = getProjects()
 
   return posts.map((post) => ({
     slug: post.slug,
