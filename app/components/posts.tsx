@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Metadata } from './types'; 
 import { formatDate as formatDateBlog } from 'app/Portfolio/utils';
 import { formatDate as formatDateProjects } from 'app/projects/utils';
 import { formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
