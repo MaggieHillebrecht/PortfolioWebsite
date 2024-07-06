@@ -12,7 +12,7 @@ export default function Page() {
       <p>
         Here are some projects I have worked on that showcase my range of skills. From programming to leadership and teamwork:
       </p>
-      <div>
+      <div style={{ marginTop: '1rem' }}>
         <ProjectPosts />
       </div>
     </section>
