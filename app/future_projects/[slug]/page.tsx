@@ -1,5 +1,3 @@
-// pages/future_projects/[slug]/index.tsx
-
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
 import { formatDate, getFutureProjects } from 'app/future_projects/utils';
@@ -72,6 +70,10 @@ export async function getStaticProps({ params }) {
 }
 
 export default function FutureProjectPage({ post }) {
+  if (!post) {
+    return <div>Loading...</div>; // Handle loading state if necessary
+  }
+
   return (
     <section>
       <script
