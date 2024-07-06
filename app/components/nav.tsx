@@ -4,13 +4,13 @@ const navItems = {
   '/': {
     name: 'home',
   },
-  '/blog': {
+  '/Portfolio': {
     name: 'portfolio',
   },
-  'https://hillebrecht2.wixsite.com/my-site/projects': {
+  '/projects': {
     name: 'projects',
   },
-  'https://hillebrecht2.wixsite.com/my-site/projects-6': {
+  'future_projects': {
     name: 'future projects',
   },
 }
