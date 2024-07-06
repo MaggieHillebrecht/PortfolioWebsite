@@ -1,33 +1,59 @@
-import { useEffect, useState } from 'react';
+import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
 import { formatDate, getFutureProjects } from 'app/future_projects/utils';
 import { baseUrl } from 'app/sitemap';
 
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   let posts = getFutureProjects();
-  let paths = posts.map((post) => ({
-    params: { slug: post.slug },
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.slug,
+    },
   }));
+}
+
+export function generateMetadata({ params }) {
+  let post = getFutureProjects().find((post) => post.slug === params.slug);
+  if (!post) {
+    return;
+  }
+
+  let { title, publishedAt, summary, image } = post.metadata;
+  let ogImage = image
+    ? `${baseUrl}${image}`
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
-    paths,
-    fallback: false,
+    title,
+    description: summary,
+    openGraph: {
+      title,
+      description: summary,
+      type: 'article',
+      publishedTime: publishedAt,
+      url: `${baseUrl}/future_projects/${post.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: summary,
+      images: [ogImage],
+    },
   };
 }
 
-export default function FutureProjectPage({ post }) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false); // Simulate loading state, you can fetch data here
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>; // Show loading state if data is being fetched
-  }
+export default function FutureProjects({ params }) {
+  let post = getFutureProjects().find((post) => post.slug === params.slug);
 
   if (!post) {
-    return <div>Post not found</div>; // Handle case where post is not found
+    notFound(); // Return 404 if post is not found
+    return null; // Ensure to return null or a loading state if necessary
   }
 
   return (
