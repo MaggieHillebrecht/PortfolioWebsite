@@ -1,15 +1,16 @@
 import { BlogPosts } from 'app/components/posts'
 
 export const metadata = {
-  title: 'Portfolio',
-  description: 'View my Game Portfolio',
+  title: 'Future Projects',
+  description: 'View some of my ongoing projects',
 }
 
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Portfolio</h1>
-      <p>Here are games that I have worked on:</p>
+      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Future Projects</h1>
+      <p>I constantly are writing down ideas for fully fledged games, game mechanics, levels designs, and programs.
+        However, these are a few that I am currently working on in my spare time:</p>
       <BlogPosts />
     </section>
   )
