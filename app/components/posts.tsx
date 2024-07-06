@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { formatDate, getBlogPosts } from 'app/Portfolio/utils';
-import { formatDate, getProjects } from 'app/projects/utils';
-import { formatDate, getFutureProjects } from 'app/future_projects/utils';
-import { getSortedPosts } from 'app/utils/common';
+import { formatDate as formatDateBlog } from 'app/Portfolio/utils';
+import { formatDate as formatDateProjects } from 'app/projects/utils';
+import { formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
 export function BlogPosts() {
   let allBlogs = getSortedPosts(getBlogPosts);
