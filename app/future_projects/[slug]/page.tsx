@@ -1,22 +1,11 @@
+// pages/future_projects/[slug].tsx
+
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
 import { formatDate, getFutureProjects } from 'app/future_projects/utils';
 import { baseUrl } from 'app/sitemap';
 
-export async function getStaticPaths() {
-  let posts = getFutureProjects();
-
-  return {
-    paths: posts.map((post) => ({
-      params: {
-        slug: post.slug,
-      },
-    })),
-    fallback: false, 
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   let posts = getFutureProjects();
   let post = posts.find((post) => post.slug === params.slug);
 
