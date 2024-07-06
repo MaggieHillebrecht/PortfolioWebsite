@@ -19,41 +19,44 @@ export function generateMetadata({ params }) {
     return;
   }
 
-  let { title, publishedAt, summary, image } = post.metadata;
-  let ogImage = image
-    ? `${baseUrl}${image}`
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
-
-  return {
+  let {
     title,
-    description: summary,
-    openGraph: {
-      title,
-      description: summary,
-      type: 'article',
-      publishedTime: publishedAt,
-      url: `${baseUrl}/future_projects/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description: summary,
-      images: [ogImage],
-    },
-  };
-}
+    publishedAt: publishedTime,
+    summary: description,
+    image,
+  } = post.metadata
+  let ogImage = image
+    ? image
+    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
 
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        type: 'article',
+        publishedTime,
+        url: `${baseUrl}/future_projects/${post.slug}`,
+        images: [
+          {
+            url: ogImage,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [ogImage],
+      },
+    }
+  }
 export default function FutureProjects({ params }) {
   let post = getFutureProjects().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound(); 
-    return null; 
   }
 
   return (
@@ -64,7 +67,7 @@ export default function FutureProjects({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'future project post',
+            '@type': 'BlogPosting',
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
@@ -75,7 +78,7 @@ export default function FutureProjects({ params }) {
             url: `${baseUrl}/future_projects/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'My Portfolio',
+              name: 'Future Projects',
             },
           }),
         }}
