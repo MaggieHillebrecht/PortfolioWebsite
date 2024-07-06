@@ -1,17 +1,10 @@
 import Link from 'next/link';
-import { formatDate as formatDateBlog } from 'app/Portfolio/utils';
-import { formatDate as formatDateProjects } from 'app/projects/utils';
-import { formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
-
-// export function getSortedPosts(getPostsFunction: () => SomePostType[]) {
-//   let allPosts = getPostsFunction();
-//   return allPosts.sort((a: SomePostType, b: SomePostType) =>
-//     new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime()
-//   );
-// }
+import { getBlogPosts, formatDate as formatDateBlog } from 'app/Portfolio/utils';
+import { getProjects, formatDate as formatDateProjects } from 'app/projects/utils';
+import { getFutureProjects, formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
 export function BlogPosts() {
-  let allBlogs = (BlogPosts);
+  let allBlogs = getBlogPosts(); 
 
   return (
     <div>
@@ -23,7 +16,7 @@ export function BlogPosts() {
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
             <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-              {formatDate(post.metadata.publishedAt, false)}
+              {formatDateBlog(post.metadata.publishedAt, false)}
             </p>
             <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
               {post.metadata.title}
@@ -36,7 +29,7 @@ export function BlogPosts() {
 }
 
 export function ProjectPosts() {
-  let allProjects = (ProjectsPosts);
+  let allProjects = getProjects(); // Invoke getProjects to fetch projects
 
   return (
     <div>
@@ -48,7 +41,7 @@ export function ProjectPosts() {
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
             <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-              {formatDate(post.metadata.publishedAt, false)}
+              {formatDateProjects(post.metadata.publishedAt, false)}
             </p>
             <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
               {post.metadata.title}
@@ -61,7 +54,7 @@ export function ProjectPosts() {
 }
 
 export function FutureProjectPosts() {
-  let allFutureProjects = (FutureProjectPosts);
+  let allFutureProjects = getFutureProjects(); // Invoke getFutureProjects to fetch future projects
 
   return (
     <div>
@@ -73,7 +66,7 @@ export function FutureProjectPosts() {
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
             <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
-              {formatDate(post.metadata.publishedAt, false)}
+              {formatDateFutureProjects(post.metadata.publishedAt, false)}
             </p>
             <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
               {post.metadata.title}
