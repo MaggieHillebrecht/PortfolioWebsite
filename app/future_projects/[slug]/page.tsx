@@ -52,8 +52,8 @@ export default function FutureProjects({ params }) {
   let post = getFutureProjects().find((post) => post.slug === params.slug);
 
   if (!post) {
-    notFound(); // Return 404 if post is not found
-    return null; // Ensure to return null or a loading state if necessary
+    notFound(); 
+    return null; 
   }
 
   return (
@@ -64,7 +64,7 @@ export default function FutureProjects({ params }) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'BlogPosting',
+            '@type': 'future project post',
             headline: post.metadata.title,
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
