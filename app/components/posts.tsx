@@ -11,7 +11,7 @@ import { formatDate as formatDateFutureProjects } from 'app/future_projects/util
 // }
 
 export function BlogPosts() {
-  let allBlogs = (getBlogPosts);
+  let allBlogs = (BlogPosts);
 
   return (
     <div>
@@ -36,7 +36,7 @@ export function BlogPosts() {
 }
 
 export function ProjectPosts() {
-  let allProjects = (getProjects);
+  let allProjects = (ProjectsPosts);
 
   return (
     <div>
@@ -61,7 +61,7 @@ export function ProjectPosts() {
 }
 
 export function FutureProjectPosts() {
-  let allFutureProjects = (getFutureProjects);
+  let allFutureProjects = (FutureProjectPosts);
 
   return (
     <div>
