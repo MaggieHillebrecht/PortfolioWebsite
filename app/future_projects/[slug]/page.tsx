@@ -1,9 +1,11 @@
+// pages/future_projects/[slug]/index.tsx
+
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
 import { formatDate, getFutureProjects } from 'app/future_projects/utils';
 import { baseUrl } from 'app/sitemap';
 
-export async function generateStaticPaths() {
+export async function getStaticPaths() {
   let posts = getFutureProjects();
 
   return {
@@ -12,12 +14,13 @@ export async function generateStaticPaths() {
         slug: post.slug,
       },
     })),
-    fallback: false, 
+    fallback: false, // or 'blocking' if you want to use Incremental Static Regeneration
   };
 }
 
 export async function getStaticProps({ params }) {
-  let post = getFutureProjects().find((post) => post.slug === params.slug);
+  let posts = getFutureProjects();
+  let post = posts.find((post) => post.slug === params.slug);
 
   if (!post) {
     return {
@@ -32,7 +35,16 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      post,
+      post: {
+        metadata: {
+          title,
+          publishedAt,
+          summary,
+          image,
+        },
+        slug: post.slug,
+        content: post.content,
+      },
       meta: {
         title,
         description: summary,
