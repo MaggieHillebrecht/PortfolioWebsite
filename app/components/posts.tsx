@@ -3,6 +3,11 @@ import { formatDate as formatDateBlog } from 'app/Portfolio/utils';
 import { formatDate as formatDateProjects } from 'app/projects/utils';
 import { formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
+export function getSortedPosts(getPostsFunction) {
+  let allPosts = getPostsFunction();
+  return allPosts.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
+}
+
 export function BlogPosts() {
   let allBlogs = getSortedPosts(getBlogPosts);
 
