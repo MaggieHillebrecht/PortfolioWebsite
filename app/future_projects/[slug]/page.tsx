@@ -3,20 +3,26 @@ import { CustomMDX } from 'app/components/mdx';
 import { formatDate, getFutureProjects } from 'app/future_projects/utils';
 import { baseUrl } from 'app/sitemap';
 
-export async function generateStaticParams() {
+export async function generateStaticPaths() {
   let posts = getFutureProjects();
 
-  return posts.map((post) => ({
-    params: {
-      slug: post.slug,
-    },
-  }));
+  return {
+    paths: posts.map((post) => ({
+      params: {
+        slug: post.slug,
+      },
+    })),
+    fallback: false, 
+  };
 }
 
-export function generateMetadata({ params }) {
+export async function getStaticProps({ params }) {
   let post = getFutureProjects().find((post) => post.slug === params.slug);
+
   if (!post) {
-    return;
+    return {
+      notFound: true,
+    };
   }
 
   let { title, publishedAt, summary, image } = post.metadata;
@@ -25,37 +31,35 @@ export function generateMetadata({ params }) {
     : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
-    title,
-    description: summary,
-    openGraph: {
-      title,
-      description: summary,
-      type: 'article',
-      publishedTime: publishedAt,
-      url: `${baseUrl}/future_projects/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
+    props: {
+      post,
+      meta: {
+        title,
+        description: summary,
+        openGraph: {
+          title,
+          description: summary,
+          type: 'article',
+          publishedTime: publishedAt,
+          url: `${baseUrl}/future_projects/${post.slug}`,
+          images: [
+            {
+              url: ogImage,
+            },
+          ],
         },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description: summary,
-      images: [ogImage],
+        twitter: {
+          card: 'summary_large_image',
+          title,
+          description: summary,
+          images: [ogImage],
+        },
+      },
     },
   };
 }
 
-export default function FutureProjects({ params }) {
-  let post = getFutureProjects().find((post) => post.slug === params.slug);
-
-  if (!post) {
-    notFound(); // Return 404 if post is not found
-    return null; // Ensure to return null or a loading state if necessary
-  }
-
+export default function FutureProjectPage({ post }) {
   return (
     <section>
       <script
