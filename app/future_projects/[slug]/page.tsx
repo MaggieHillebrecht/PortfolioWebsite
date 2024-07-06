@@ -51,7 +51,7 @@ export function generateMetadata({ params }) {
   }
 }
 
-export default function Blog({ params }) {
+export default function FutureProjects({ params }) {
   let post = getFutureProjects().find((post) => post.slug === params.slug)
 
   if (!post) {
