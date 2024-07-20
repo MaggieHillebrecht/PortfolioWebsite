@@ -1,5 +1,5 @@
 import { baseUrl } from 'app/sitemap'
-import { getFutureProjects } from 'app/future_projects/utils'
+import { getFutureProjects } from 'app/FutureProjects/utils'
 
 export async function GET() {
   let allBlogs = await getFutureProjects()

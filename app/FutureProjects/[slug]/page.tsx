@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
-import { formatDate, getFutureProjects } from 'app/future_projects/utils';
+import { formatDate, getFutureProjects } from 'app/FutureProjects/utils';
 import { baseUrl } from 'app/sitemap';
 
 export async function generateStaticParams() {
@@ -37,7 +37,7 @@ export function generateMetadata({ params }) {
         description,
         type: 'article',
         publishedTime,
-        url: `${baseUrl}/future_projects/${post.slug}`,
+        url: `${baseUrl}/FutureProjects/${post.slug}`,
         images: [
           {
             url: ogImage,
@@ -75,7 +75,7 @@ export default function FutureProjects({ params }) {
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/future_projects/${post.slug}`,
+            url: `${baseUrl}/FutureProjects/${post.slug}`,
             author: {
               '@type': 'Person',
               name: 'Future Projects',

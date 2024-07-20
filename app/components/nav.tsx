@@ -10,7 +10,7 @@ const navItems = {
   '/CodingPortfolio': {
     name: 'coding portfolio',
   },
-  '/future_projects': {
+  '/FutureProjects': {
     name: 'future projects',
   },
 }
