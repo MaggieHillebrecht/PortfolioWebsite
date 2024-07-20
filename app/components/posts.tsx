@@ -22,6 +22,13 @@ export function BlogPosts() {
               {post.metadata.title}
             </p>
           </div>
+          {post.metadata.image && (
+            <img
+              src={post.metadata.image}
+              alt={post.metadata.title}
+              className="w-full h-auto mt-2"
+            />
+          )}
         </Link>
       ))}
     </div>
@@ -29,7 +36,7 @@ export function BlogPosts() {
 }
 
 export function ProjectPosts() {
-  let allProjects = getProjects(); // Invoke getProjects to fetch projects
+  let allProjects = getProjects(); 
 
   return (
     <div>
@@ -54,7 +61,7 @@ export function ProjectPosts() {
 }
 
 export function FutureProjectPosts() {
-  let allFutureProjects = getFutureProjects(); // Invoke getFutureProjects to fetch future projects
+  let allFutureProjects = getFutureProjects(); 
 
   return (
     <div>
