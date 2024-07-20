@@ -1,5 +1,5 @@
 import { baseUrl } from 'app/sitemap'
-import { getProjects } from 'app/projects/utils'
+import { getProjects } from 'app/CodingPortfolio/utils'
 
 export async function GET() {
   let allBlogs = await getProjects()
@@ -27,7 +27,7 @@ export async function GET() {
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>My Portfolio</title>
+        <title>Coding Portfolio</title>
         <link>${baseUrl}</link>
         <description>This is my portfolio RSS feed</description>
         ${itemsXml}

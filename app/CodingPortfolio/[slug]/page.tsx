@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { CustomMDX } from 'app/components/mdx';
-import { formatDate, getProjects } from 'app/projects/utils';
+import { formatDate, getProjects } from 'app/CodingPortfolio/utils';
 import { baseUrl } from 'app/sitemap';
 
 export async function generateStaticParams() {
@@ -29,7 +29,7 @@ export function generateMetadata({ params }) {
       description: summary,
       type: 'article',
       publishedTime: publishedAt,
-      url: `${baseUrl}/projects/${post.slug}`,
+      url: `${baseUrl}/CodingPortfolio/${post.slug}`,
       images: [
         {
           url: ogImage,
@@ -68,10 +68,10 @@ export default function Projects({ params }) {
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/projects/${post.slug}`,
+            url: `${baseUrl}/CodingPortfolio/${post.slug}`,
             author: {
               '@type': 'Person',
-              name: 'projects',
+              name: 'CodingPortfolio',
             },
           }),
         }}
