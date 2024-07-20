@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: 'Home | Maggie Hillebrecht :)',
     template: '%s | Maggie Hillebrecht :)',
   },
-  description: 'This is my portfolio.',
+  description: 'This is my website!',
   openGraph: {
     title: 'Maggie Hillebrecht',
     description: 'Click to see all the cool stuff I work on',
