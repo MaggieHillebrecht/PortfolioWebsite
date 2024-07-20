@@ -49,7 +49,7 @@ function getMDXData(dir) {
   })
 }
 
-export function getPortfolio() {
+export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'Portfolio', 'posts'))
 }
 
