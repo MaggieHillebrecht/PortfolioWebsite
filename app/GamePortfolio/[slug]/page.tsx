@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getBlogPosts } from 'app/Portfolio/utils'
+import { formatDate, getBlogPosts } from 'app/GamePortfolio/utils'
 import { baseUrl } from 'app/sitemap'
 
 export async function generateStaticParams() {
@@ -35,7 +35,7 @@ export function generateMetadata({ params }) {
       description,
       type: 'article',
       publishedTime,
-      url: `${baseUrl}/Portfolio/${post.slug}`,
+      url: `${baseUrl}/GamePortfolio/${post.slug}`,
       images: [
         {
           url: ogImage,

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getBlogPosts, formatDate as formatDateBlog } from 'app/Portfolio/utils';
+import { getBlogPosts, formatDate as formatDateBlog } from 'app/GamePortfolio/utils';
 import { getProjects, formatDate as formatDateProjects } from 'app/projects/utils';
 import { getFutureProjects, formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
