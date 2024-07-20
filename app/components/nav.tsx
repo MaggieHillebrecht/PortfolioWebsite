@@ -5,10 +5,10 @@ const navItems = {
     name: 'home',
   },
   '/Portfolio': {
-    name: 'portfolio',
+    name: 'game portfolio',
   },
   '/projects': {
-    name: 'projects',
+    name: 'coding portfolio',
   },
   '/future_projects': {
     name: 'future projects',

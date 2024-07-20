@@ -1,7 +1,7 @@
 import { ProjectPosts } from 'app/components/posts'
 
 export const metadata = {
-  title: 'Projects',
+  title: 'Coding Portfolio and Various Projects',
   description: 'Here are some projects I have worked on that showcase my range of skills. From programming to leadership and teamwork: ',
 }
 
