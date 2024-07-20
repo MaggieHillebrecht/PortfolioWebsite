@@ -8,8 +8,8 @@ export const metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Portfolio</h1>
-      <p>Here are games that I have worked on:</p>
+      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Welcome to my portfolio!</h1>
+      <p>Here you will find games that I have worked on whether it is programming, UI, QA, or production:</p>
       <div style={{ marginTop: '1rem' }}>
       <BlogPosts />
       </div>
