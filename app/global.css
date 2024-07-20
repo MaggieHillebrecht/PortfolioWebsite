@@ -38,6 +38,12 @@ html {
   background-position: center;
 }
 
+.content-wrapper {
+  @apply bg-white bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75 p-6 rounded-lg shadow-lg;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 
