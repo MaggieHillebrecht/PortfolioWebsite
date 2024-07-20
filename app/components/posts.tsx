@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { getBlogPosts, formatDate as formatDateBlog } from 'app/Portfolio/utils';
+import { getPortfolio, formatDate as formatDateBlog } from 'app/Portfolio/utils';
 import { getProjects, formatDate as formatDateProjects } from 'app/projects/utils';
 import { getFutureProjects, formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
-export function BlogPosts() {
-  let allBlogs = getBlogPosts(); 
+export function PortfolioPosts() {
+  let allBlogs = getPortfolio(); 
 
   return (
     <div>
