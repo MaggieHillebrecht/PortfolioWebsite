@@ -1,19 +1,10 @@
 import Link from 'next/link';
-<<<<<<< HEAD
-import { getBlogPosts, formatDate as formatDatePortfolio } from 'app/Portfolio/utils';
-=======
-import { getPortfolio, formatDate as formatDateBlog } from 'app/Portfolio/utils';
->>>>>>> 0a6b40c69aeb765ed7d041659dab001a63657370
+import { getBlogPosts, formatDate as formatDateBlog } from 'app/Portfolio/utils';
 import { getProjects, formatDate as formatDateProjects } from 'app/projects/utils';
 import { getFutureProjects, formatDate as formatDateFutureProjects } from 'app/future_projects/utils';
 
-<<<<<<< HEAD
-export function PortfolioPosts() {
-  let allPortfolios = getPortfolio(); 
-=======
-export function PortfolioPosts() {
-  let allBlogs = getPortfolio(); 
->>>>>>> 0a6b40c69aeb765ed7d041659dab001a63657370
+export function BlogPosts() {
+  let allBlogs = getBlogPosts(); 
 
   return (
     <div>
