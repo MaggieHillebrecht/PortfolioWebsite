@@ -1,40 +1,34 @@
-import { notFound } from 'next/navigation'
-import { CustomMDX } from 'app/components/mdx'
-import { formatDate, getProjects } from 'app/projects/utils'
-import { baseUrl } from 'app/sitemap'
+import { notFound } from 'next/navigation';
+import { CustomMDX } from 'app/components/mdx';
+import { formatDate, getProjects } from 'app/projects/utils';
+import { baseUrl } from 'app/sitemap';
 
 export async function generateStaticParams() {
-  let posts = getProjects()
+  const posts = getProjects();
 
   return posts.map((post) => ({
     slug: post.slug,
-  }))
+  }));
 }
 
 export function generateMetadata({ params }) {
-  let post = getProjects().find((post) => post.slug === params.slug)
+  const post = getProjects().find((post) => post.slug === params.slug);
+
   if (!post) {
-    return
+    return;
   }
 
-  let {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-  } = post.metadata
-  let ogImage = image
-    ? image
-    : `${baseUrl}/og?title=${encodeURIComponent(title)}`
+  const { title, publishedAt, summary, image } = post.metadata;
+  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
-    description,
+    description: summary,
     openGraph: {
       title,
-      description,
+      description: summary,
       type: 'article',
-      publishedTime,
+      publishedTime: publishedAt,
       url: `${baseUrl}/projects/${post.slug}`,
       images: [
         {
@@ -45,17 +39,17 @@ export function generateMetadata({ params }) {
     twitter: {
       card: 'summary_large_image',
       title,
-      description,
+      description: summary,
       images: [ogImage],
     },
-  }
+  };
 }
 
-export default function Projects({ params }) { 
-  let post = getProjects().find((post) => post.slug === params.slug)
+export default function Projects({ params }) {
+  const post = getProjects().find((post) => post.slug === params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -73,7 +67,7 @@ export default function Projects({ params }) {
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+              : `${baseUrl}/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/projects/${post.slug}`,
             author: {
               '@type': 'Person',
@@ -94,5 +88,6 @@ export default function Projects({ params }) {
         <CustomMDX source={post.content} />
       </article>
     </section>
-  )
+  );
 }
+
