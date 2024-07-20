@@ -8,7 +8,7 @@ export const metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Projects</h1>
+      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Coding Portfolio and Various Projects</h1>
       <p>
         Here are some projects I have worked on that showcase my range of skills. From programming to leadership and teamwork:
       </p>
