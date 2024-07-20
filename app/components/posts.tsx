@@ -54,6 +54,13 @@ export function ProjectPosts() {
               {post.metadata.title}
             </p>
           </div>
+          {post.metadata.image && (
+            <img
+              src={post.metadata.image}
+              alt={post.metadata.title}
+              className="w-full h-auto mt-2"
+            />
+          )}
         </Link>
       ))}
     </div>
@@ -79,6 +86,13 @@ export function FutureProjectPosts() {
               {post.metadata.title}
             </p>
           </div>
+          {post.metadata.image && (
+            <img
+              src={post.metadata.image}
+              alt={post.metadata.title}
+              className="w-full h-auto mt-2"
+            />
+          )}
         </Link>
       ))}
     </div>
