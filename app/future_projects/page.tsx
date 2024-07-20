@@ -9,8 +9,10 @@ export default function Page() {
   return (
     <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Future Projects</h1>
-      <p>I constantly are writing down ideas for fully fledged games, game mechanics, levels designs, and programs.
-        However, these are a few that I am currently working on in my spare time:</p>
+      <p>These are some projects I am current working on in my free time or planning on 
+        working on in the future!! I typically have a note pad full of game/game mechanic ideas 
+        and these are just some of them that I am passionately working on. I don't have any deadline 
+        and will try to update their pages whenever I have pushed a big update out: </p>
       <div style={{ marginTop: '1rem' }}>
       <FutureProjectPosts />
       </div>
