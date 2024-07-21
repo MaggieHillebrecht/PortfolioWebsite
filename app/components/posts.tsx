@@ -7,7 +7,7 @@ export function BlogPosts() {
   let allBlogs = getBlogPosts(); 
 
   return (
-    <div>
+    <div className="content-wrapper">
       {allBlogs.map((post) => (
         <Link
           key={post.slug}
@@ -39,7 +39,7 @@ export function ProjectPosts() {
   let allProjects = getProjects(); 
 
   return (
-    <div>
+    <div className="content-wrapper">
       {allProjects.map((post) => (
         <Link
           key={post.slug}
@@ -71,7 +71,7 @@ export function FutureProjectPosts() {
   let allFutureProjects = getFutureProjects(); 
 
   return (
-    <div>
+    <div className="content-wrapper">
       {allFutureProjects.map((post) => (
         <Link
           key={post.slug}

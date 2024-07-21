@@ -39,7 +39,8 @@ html {
 }
 
 .content-wrapper {
-  @apply bg-white bg-opacity-75 dark:bg-gray-800 dark:bg-opacity-75 p-6 rounded-lg shadow-lg;
+  background-color: rgba(54, 54, 54, 0.548); 
+  @apply dark:bg-gray-800 dark:bg-opacity-75 p-6 rounded-lg shadow-lg;
   max-width: 800px;
   margin: 0 auto;
 }
