@@ -39,7 +39,7 @@ html {
   position: relative;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .center-overlay {
     content: '';
     position: fixed;
