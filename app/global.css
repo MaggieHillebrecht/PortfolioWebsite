@@ -38,35 +38,19 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  min-height: 100vh; 
-  position: relative;
 }
 
 body::before {
-  content: '';
-  position: absolute;
-  top: 2%;
-  left: 33%;
-  width: 33%; 
-  height: 95%; 
-  background: rgba(41, 41, 41, 0.678); 
-  pointer-events: none;
-  z-index: -1; 
-}
-
-.tab-content {
-  flex: 1;
-  overflow-y: auto;
-}
+    content: '';
+    position: absolute;
+    top: 2%;
+    left: 33%;
+    width: 33%; 
+    height: 95%; 
+    background: rgba(41, 41, 41, 0.678); 
+    pointer-events: none;
+    z-index: -1; 
+  }
 
 .prose .anchor {
   @apply absolute invisible no-underline;
