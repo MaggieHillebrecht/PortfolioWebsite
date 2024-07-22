@@ -39,8 +39,7 @@ html {
   position: relative;
 }
 
-@media (min-width: 100px) {
-  .center-overlay {
+body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -52,7 +51,6 @@ html {
     pointer-events: none;
     z-index: -1; 
   }
-}
 
 .prose .anchor {
   @apply absolute invisible no-underline;
