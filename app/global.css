@@ -1,6 +1,4 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import 'tailwindcss';
 
 ::selection {
   background-color: #47a3f3;
@@ -28,7 +26,7 @@
   }
   html {
     color-scheme: dark;
-    background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/413150/1a6e6c63eea63b33241afb87bb2a7d128c200267.jpg');
+    background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/413150/1a6e6c63eea63b33241afb87bb2a7d128c200267.jpg')
   }
 }
 
@@ -38,12 +36,6 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.content-wrapper {
-  @apply bg-white-75 dark:bg-gray-800-75 p-6 rounded-lg shadow-lg;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .prose .anchor {
