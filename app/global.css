@@ -52,6 +52,17 @@ body::before {
     z-index: -1; 
   }
 
+  .post-header {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+  }
+  
+  .post-image {
+    width: 150px; 
+    height: auto; 
+  }
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 

@@ -76,9 +76,16 @@ export default function Projects({ params }) {
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
+      <div className="post-header">
+        <img 
+          src={post.metadata.image || `${baseUrl}/default-image.png`} 
+          alt={post.metadata.title} 
+          className="post-image"
+        />
+        <h1 className="title font-semibold text-2xl tracking-tighter">
+          {post.metadata.title}
+        </h1>
+      </div>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
