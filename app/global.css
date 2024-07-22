@@ -40,17 +40,30 @@ html {
   position: relative;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body::before {
-    content: '';
-    position: absolute;
-    top: 2%;
-    left: 33%;
-    width: 33%; 
-    height: 95%; 
-    background: rgba(41, 41, 41, 0.678); 
-    pointer-events: none;
-    z-index: -1; 
-  }
+  content: '';
+  position: absolute;
+  top: 2%;
+  left: 33%;
+  width: 33%; 
+  height: 95%; 
+  background: rgba(41, 41, 41, 0.678); 
+  pointer-events: none;
+  z-index: -1; 
+}
+
+.tab-content {
+  flex: 1;
+  overflow-y: auto;
+}
 
 .prose .anchor {
   @apply absolute invisible no-underline;
