@@ -39,16 +39,19 @@ html {
   position: relative;
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 33%;
-  width: 33%;
-  height: 100%;
-  background: rgba(41, 41, 41, 0.678); /* Adjust the opacity as needed */
-  pointer-events: none;
-  z-index: -1;
+@media (min-width: 768px) {
+  .center-overlay {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 33%;
+    width: 33%; 
+    height: 100%; 
+    background: rgba(41, 41, 41, 0.678); 
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1; 
+  }
 }
 
 .prose .anchor {
