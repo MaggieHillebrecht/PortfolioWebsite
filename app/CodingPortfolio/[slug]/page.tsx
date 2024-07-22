@@ -1,3 +1,50 @@
+import { notFound } from 'next/navigation';
+import { CustomMDX } from 'app/components/mdx';
+import { formatDate, getProjects } from 'app/CodingPortfolio/utils';
+import { baseUrl } from 'app/sitemap';
+
+export async function generateStaticParams() {
+  const posts = getProjects();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export function generateMetadata({ params }) {
+  const post = getProjects().find((post) => post.slug === params.slug);
+
+  if (!post) {
+    return;
+  }
+
+  const { title, publishedAt, summary, image } = post.metadata;
+  const ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`;
+
+  return {
+    title,
+    description: summary,
+    openGraph: {
+      title,
+      description: summary,
+      type: 'article',
+      publishedTime: publishedAt,
+      url: `${baseUrl}/CodingPortfolio/${post.slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: summary,
+      images: [ogImage],
+    },
+  };
+}
+
 export default function Projects({ params }) {
   const post = getProjects().find((post) => post.slug === params.slug);
 
