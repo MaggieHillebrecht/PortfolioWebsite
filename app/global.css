@@ -38,14 +38,17 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
+  height: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  min-height: 100vh; 
+  position: relative;
 }
 
 body::before {
