@@ -34,7 +34,7 @@ html {
   min-width: 360px;
   background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/413150/1a6e6c63eea63b33241afb87bb2a7d128c200267.jpg');
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: fixed;
   background-position: center;
   position: relative;
 }
