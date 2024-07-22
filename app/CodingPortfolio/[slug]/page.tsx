@@ -90,4 +90,3 @@ export default function Projects({ params }) {
     </section>
   );
 }
-

@@ -35,6 +35,13 @@ function readMDXFile(filePath) {
   return parseFrontmatter(rawContent)
 }
 
+function adjustImageSize(content: string, width: number, height: number) {
+  return content.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    `<img src="$2" alt="$1" width="${width}" height="${height}" />`
+  )
+}
+
 function getMDXData(dir) {
   let mdxFiles = getMDXFiles(dir)
   return mdxFiles.map((file) => {
