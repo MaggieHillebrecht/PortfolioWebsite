@@ -45,7 +45,7 @@ body::before {
     position: absolute;
     top: 2%;
     left: 33%;
-    width: 33%; 
+    width: 35%; 
     height: 95%; 
     background: rgba(41, 41, 41, 0.678); 
     pointer-events: none;
