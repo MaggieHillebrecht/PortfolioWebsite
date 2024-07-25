@@ -43,10 +43,10 @@ html {
 body::before {
     content: '';
     position: fixed;
-    top: 2%;
-    left: 30%;
-    width: 39%; 
-    height: 95%; 
+    top: 10px;
+    left: 10px; 
+    width: 500px; 
+    height: 700px; 
     background: rgba(41, 41, 41, 0.678); 
     pointer-events: none;
     z-index: -1; 
