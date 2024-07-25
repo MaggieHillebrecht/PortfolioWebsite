@@ -90,7 +90,7 @@ export function FutureProjectPosts() {
             <img
               src={post.metadata.image}
               alt={post.metadata.title}
-              className="w-full h-auto mt-2"
+              className="w-100 h-auto mt-2"
             />
           )}
         </Link>
