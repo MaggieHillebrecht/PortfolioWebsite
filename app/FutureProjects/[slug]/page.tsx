@@ -88,7 +88,7 @@ export default function FutureProjects({ params }) {
           <img
             src={post.metadata.image}
             alt="Image"
-            className="title-image w-16 h-16 object-cover mr-4"
+            className="title-image w-20 h-16 object-cover mr-4"
           />
         )}
       <h1 className="title font-semibold text-2xl tracking-tighter">
