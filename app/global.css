@@ -44,7 +44,7 @@ body::before {
     content: '';
     position: fixed;
     top: 20px;
-    left: 100px; 
+    left: 300px; 
     width: 500px; 
     height: 700px; 
     background: rgba(41, 41, 41, 0.678); 
