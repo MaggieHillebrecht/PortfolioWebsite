@@ -63,6 +63,12 @@ body::before {
     height: auto; 
   }
 
+  .post-link:hover {
+    background-color: #f5f5f5; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transform: scale(1.02); 
+  }
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 
