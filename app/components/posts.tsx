@@ -84,15 +84,15 @@ export function FutureProjectPosts() {
             </p>
             <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
               {post.metadata.title}
-            </p>
-          </div>
-          {post.metadata.image && (
+              </div>
+            {post.metadata.image && (
             <img
               src={post.metadata.image}
               alt={post.metadata.title}
               className="w-[50px] h-auto mt-2"
             />
           )}
+            </p>
         </Link>
       ))}
     </div>
