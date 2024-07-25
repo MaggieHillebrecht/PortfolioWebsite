@@ -42,7 +42,7 @@ html {
 
 body::before {
     content: '';
-    position: absolute;
+    position: fixed;
     top: 2%;
     left: 30%;
     width: 39%; 
