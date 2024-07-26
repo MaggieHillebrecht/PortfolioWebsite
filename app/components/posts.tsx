@@ -4,31 +4,33 @@ import { getProjects, formatDate as formatDateProjects } from 'app/CodingPortfol
 import { getFutureProjects, formatDate as formatDateFutureProjects } from 'app/FutureProjects/utils';
 
 export function BlogPosts() {
-  let allBlogs = getBlogPosts(); 
+  let allBlogs = getBlogPosts();
 
   return (
     <div>
       {allBlogs.map((post) => (
         <Link
           key={post.slug}
-          className="flex flex-col space-y-1 mb-4"
+          className="flex flex-col space-y-1 mb-4 hover-highlight"
           href={`/GamePortfolio/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
             <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
               {formatDateBlog(post.metadata.publishedAt, false)}
             </p>
-            <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-              {post.metadata.title}
-            </p>
+            <div className="flex items-center space-x-2">
+              {post.metadata.image && (
+                <img
+                  src={post.metadata.image}
+                  alt={post.metadata.title}
+                  className="w-[200px] h-auto"
+                />
+              )}
+              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+                {post.metadata.title}
+              </p>
+            </div>
           </div>
-          {post.metadata.image && (
-            <img
-              src={post.metadata.image}
-              alt={post.metadata.title}
-              className="w-full h-auto mt-2"
-            />
-          )}
         </Link>
       ))}
     </div>
@@ -36,31 +38,33 @@ export function BlogPosts() {
 }
 
 export function ProjectPosts() {
-  let allProjects = getProjects(); 
+  let allProjects = getProjects();
 
   return (
     <div>
       {allProjects.map((post) => (
         <Link
           key={post.slug}
-          className="flex flex-col space-y-1 mb-4"
+          className="flex flex-col space-y-1 mb-4 hover-highlight"
           href={`/CodingPortfolio/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
             <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
               {formatDateProjects(post.metadata.publishedAt, false)}
             </p>
-            <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
-              {post.metadata.title}
-            </p>
+            <div className="flex items-center space-x-2">
+              {post.metadata.image && (
+                <img
+                  src={post.metadata.image}
+                  alt={post.metadata.title}
+                  className="w-[200px] h-auto"
+                />
+              )}
+              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+                {post.metadata.title}
+              </p>
+            </div>
           </div>
-          {post.metadata.image && (
-            <img
-              src={post.metadata.image}
-              alt={post.metadata.title}
-              className="w-full h-auto mt-2"
-            />
-          )}
         </Link>
       ))}
     </div>
