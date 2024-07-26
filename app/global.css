@@ -110,6 +110,15 @@ body::before {
   @apply visible;
 }
 
+.hover-highlight {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.hover-highlight:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* light background highlight */
+  color: #f5f5f5; /* very light text color */
+}
+
 .prose a {
   @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
 }
