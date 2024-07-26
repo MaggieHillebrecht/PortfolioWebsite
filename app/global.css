@@ -26,7 +26,7 @@
   }
   html {
     color-scheme: dark;
-    background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/413150/1a6e6c63eea63b33241afb87bb2a7d128c200267.jpg')
+    background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/413150/1a6e6c63eea63b33241afb87bb2a7d128c200267.jpg');
   }
 }
 
@@ -34,54 +34,71 @@ html {
   min-width: 360px;
   background-image: url('https://cdn.steamstatic.com/steamcommunity/public/images/items/413150/1a6e6c63eea63b33241afb87bb2a7d128c200267.jpg');
   background-size: cover;
-  background-attachment: fixed; 
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
 }
 
 body::before {
-    content: '';
-    position: fixed;
+  content: '';
+  position: fixed;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  background: rgba(41, 41, 41, 0.678);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  body::before {
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    height: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  body::before {
     top: 20px;
-    left: 420px; 
-    width: 600px; 
-    height: 750px; 
-    background: rgba(41, 41, 41, 0.678); 
-    pointer-events: none;
-    z-index: -1; 
+    left: 420px;
+    width: 600px;
+    height: 750px;
   }
+}
 
-  .post-header {
-    display: flex;
-    align-items: center;
-    gap: 16px; 
-  }
-  
-  .post-image {
-    width: 150px; 
-    height: auto; 
-  }
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-  .post-link {
-    display: flex;
-    flex-direction: column;
-    space-y: 1rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s, transform 0.2s;
-  }
+.post-image {
+  width: 150px;
+  height: auto;
+}
 
-  .post-link:hover {
-    background-color: #f5f5f5; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    transform: scale(1.02); 
-  }
+.post-link {
+  display: flex;
+  flex-direction: column;
+  space-y: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.post-link:hover {
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
 
 .prose .anchor {
   @apply absolute invisible no-underline;
-
   margin-left: -1em;
   padding-right: 0.5em;
   width: 80%;
@@ -125,7 +142,6 @@ body::before {
 }
 
 .prose img {
-  /* Don't apply styles to next/image */
   @apply m-0;
 }
 
@@ -162,7 +178,6 @@ body::before {
 }
 
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
 }
@@ -172,11 +187,10 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Remove Safari input shadow on mobile */
 input[type='text'],
 input[type='email'] {
   -webkit-appearance: none;
