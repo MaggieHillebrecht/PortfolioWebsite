@@ -88,7 +88,7 @@ export default function Blog({ params }) {
         <img
           src={post.metadata.image}
           alt="Image"
-          className="title-image w-40 h-26 object-cover mr-4"
+          className="title-image w-50 h-36 object-cover mr-4"
         />
       )}
       {/* Getting the title of the post */}
