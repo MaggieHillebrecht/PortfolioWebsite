@@ -6,6 +6,9 @@ import { getFutureProjects, formatDate as formatDateFutureProjects } from 'app/F
 export function BlogPosts() {
   let allBlogs = getBlogPosts();
 
+  // Sort posts by date in descending order
+  allBlogs.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
+
   return (
     <div>
       {allBlogs.map((post) => (
@@ -37,8 +40,11 @@ export function BlogPosts() {
   );
 }
 
+
 export function ProjectPosts() {
   let allProjects = getProjects();
+
+  allProjects.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
 
   return (
     <div>
@@ -72,7 +78,9 @@ export function ProjectPosts() {
 }
 
 export function FutureProjectPosts() {
-  let allFutureProjects = getFutureProjects(); 
+  let allFutureProjects = getFutureProjects();
+
+  allFutureProjects.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
 
   return (
     <div>
@@ -91,7 +99,7 @@ export function FutureProjectPosts() {
                 <img
                   src={post.metadata.image}
                   alt={post.metadata.title}
-                  className="w-[200px] h-auto"
+                  className="w-[200px] h-auto"}
                 />
               )}
               <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
