@@ -82,6 +82,18 @@ export default function Blog({ params }) {
           }),
         }}
       />
+      <div className="title-container flex items-center">
+        {post.metadata.image && (
+          <img
+            src={post.metadata.image}
+            alt="Image"
+            className="title-image w-25 h-16 object-cover mr-4"
+          />
+        )}
+      <h1 className="title font-semibold text-2xl tracking-tighter">
+        {post.metadata.title}
+      </h1>
+      </div>
       <h1 className="title font-semibold text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
