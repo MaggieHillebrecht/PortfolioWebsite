@@ -81,7 +81,7 @@ export default function Blog({ params }) {
             },
           }),
         }}
-      />
+      /> /** adding the image next to the title within the post */
       <div className="title-container flex items-center">
         {post.metadata.image && (
           <img
@@ -89,19 +89,16 @@ export default function Blog({ params }) {
             alt="Image"
             className="title-image w-25 h-16 object-cover mr-4"
           />
-        )}
+        )} /**getting title of the post */
       <h1 className="title font-semibold text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
-      </div>
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
+      </div> /**getting the date of the post */
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)}
         </p>
-      </div>
+      </div> /** getting the content of the post */
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>
