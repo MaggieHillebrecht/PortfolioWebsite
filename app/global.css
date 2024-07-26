@@ -43,7 +43,7 @@ html {
 body::before {
   content: '';
   position: fixed;
-  top: 10vh;
+  top: 0vh;
   left: 10vw;
   width: 80vw;
   height: 100vh;
@@ -54,7 +54,7 @@ body::before {
 
 @media (min-width: 768px) {
   body::before {
-    top: 10vh;
+    top: 0vh;
     left: 10vw;
     width: 70vw;
     height: 100vh;
