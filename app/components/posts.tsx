@@ -7,7 +7,7 @@ export function BlogPosts() {
   let allBlogs = getBlogPosts();
 
   // Sort posts by date in descending order
-  allBlogs.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
+  allBlogs.sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime());
 
   return (
     <div>
@@ -44,7 +44,7 @@ export function BlogPosts() {
 export function ProjectPosts() {
   let allProjects = getProjects();
 
-  allProjects.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
+  allProjects.sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime());
 
   return (
     <div>
@@ -80,7 +80,7 @@ export function ProjectPosts() {
 export function FutureProjectPosts() {
   let allFutureProjects = getFutureProjects();
 
-  allFutureProjects.sort((a, b) => new Date(b.metadata.publishedAt) - new Date(a.metadata.publishedAt));
+  allFutureProjects.sort((a, b) => new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime());
 
   return (
     <div>
