@@ -75,7 +75,7 @@ export function FutureProjectPosts() {
       {allFutureProjects.map((post) => (
         <Link
           key={post.slug}
-          className="flex flex-col space-y-1 mb-4"
+          className="flex flex-col space-y-1 mb-4 hover-highlight"
           href={`/FutureProjects/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
