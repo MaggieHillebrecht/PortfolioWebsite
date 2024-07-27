@@ -10,8 +10,8 @@ export default function Page() {
           <Image
             src="https://i.postimg.cc/W4sPyh9m/IMG-3621.jpg"
             alt="Picture of me :D"
-            width={250}
-            height={250}
+            width={225}
+            height={225}
           />
         </div>
       </h1>
