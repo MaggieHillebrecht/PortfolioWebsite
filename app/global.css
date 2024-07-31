@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+* {
+  cursor: url('https://cur.cursors-4u.net/nature/nat-5/nat452.ani'), 
+          url('https://cur.cursors-4u.net/nature/nat-5/nat452.png'), 
+          auto !important;
+}
+
 ::selection {
   background-color: #47a3f3;
   color: #fefefe;
