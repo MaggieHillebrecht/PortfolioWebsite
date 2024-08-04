@@ -29,7 +29,7 @@ export function BlogPosts() {
                   className="w-[200px] h-auto"
                 />
               )}
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <p className="text-white dark:text-white tracking-tight">
                 {post.metadata.title}
               </p>
             </div>
@@ -39,7 +39,6 @@ export function BlogPosts() {
     </div>
   );
 }
-
 
 export function ProjectPosts() {
   let allProjects = getProjects();
@@ -66,7 +65,7 @@ export function ProjectPosts() {
                   className="w-[200px] h-auto"
                 />
               )}
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <p className="text-white dark:text-white tracking-tight">
                 {post.metadata.title}
               </p>
             </div>
@@ -102,7 +101,7 @@ export function FutureProjectPosts() {
                   className="w-[200px] h-auto"
                 />
               )}
-              <p className="text-neutral-900 dark:text-neutral-100 tracking-tight">
+              <p className="text-white dark:text-white tracking-tight">
                 {post.metadata.title}
               </p>
             </div>
