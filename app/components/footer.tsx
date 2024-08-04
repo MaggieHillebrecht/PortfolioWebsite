@@ -18,10 +18,10 @@ function ArrowIcon() {
 export default function Footer() {
   return (
     <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-grey-300 md:flex-row md:space-x-4 md:space-y-0">
+      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-gray-400 dark:text-gray-400 md:flex-row md:space-x-4 md:space-y-0">
         <li>
           <a
-            className="flex items-center transition-all hover:text-gray-300"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
             href="https://itch.io/c/2381101/maggies-portfolio"
@@ -32,7 +32,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-gray-300"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/MagPie0"
@@ -43,7 +43,7 @@ export default function Footer() {
         </li>
         <li>
           <a
-            className="flex items-center transition-all hover:text-gray-300"
+            className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             rel="noopener noreferrer"
             target="_blank"
             href="https://www.linkedin.com/in/margaret-hillebrecht-2575951b4/"
@@ -53,7 +53,7 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className="mt-8 text-white">
+      <p className="mt-8 text-gray-400 dark:text-gray-400">
         Hillebrecht@chapman.edu
       </p>
     </footer>
