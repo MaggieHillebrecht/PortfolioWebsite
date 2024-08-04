@@ -18,7 +18,7 @@ export function BlogPosts() {
           href={`/GamePortfolio/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-            <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+            <p className="text-white dark:text-white w-[100px] tabular-nums">
               {formatDateBlog(post.metadata.publishedAt, false)}
             </p>
             <div className="flex items-center space-x-2">
@@ -54,7 +54,7 @@ export function ProjectPosts() {
           href={`/CodingPortfolio/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-            <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+            <p className="text-white dark:text-white w-[100px] tabular-nums">
               {formatDateProjects(post.metadata.publishedAt, false)}
             </p>
             <div className="flex items-center space-x-2">
@@ -90,7 +90,7 @@ export function FutureProjectPosts() {
           href={`/FutureProjects/${post.slug}`}
         >
           <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
-            <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
+            <p className="text-white dark:text-white w-[100px] tabular-nums">
               {formatDateFutureProjects(post.metadata.publishedAt, false)}
             </p>
             <div className="flex items-center space-x-2">
