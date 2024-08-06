@@ -88,7 +88,7 @@ export function generateMetadata({ params }) {
             <img
               src={post.metadata.image}
               alt="Image"
-              className="title-image w-25 h-16 object-cover mr-4"
+              className="title-image w-50 h-30 object-cover mr-4"
             />
           )}
           <h1 className="title font-semibold text-2xl tracking-tighter">
