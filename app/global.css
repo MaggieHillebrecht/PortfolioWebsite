@@ -140,10 +140,21 @@ body::before {
   color: white; 
 }
 
+.prose span,
+.prose li,
+.prose ul,
+.prose ol,
+.prose blockquote,
+.prose pre,
+.prose code,
 .prose h1,
 .prose h2,
 .prose h3,
-.prose h4 {
+.prose h4,
+.prose h5,
+.prose h6,
+.prose strong,
+.prose em{
   color: white; 
 }
 
