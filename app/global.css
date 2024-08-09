@@ -139,6 +139,13 @@ body::before {
   color: white; 
 }
 
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: white; 
+}
+
 .prose .anchor:after {
   @apply text-neutral-300 dark:text-neutral-700;
   content: '#';
