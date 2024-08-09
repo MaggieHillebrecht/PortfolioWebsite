@@ -95,11 +95,11 @@ export function generateMetadata({ params }) {
             {post.metadata.title} 
           </h1>
         </div>
-        <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-          <p className="text-sm text-white">
+        <div className="flex justify-between items-center mt-2 mb-8 text-sm dark:text-white">
+          <p className="text-sm text-neutral-600 dark:text-neutral-400">
             {formatDate(post.metadata.publishedAt)}
           </p>
-       </div>
+        </div>
        <article className="prose text-white">
           <CustomMDX source={post.content} />
         </article>
