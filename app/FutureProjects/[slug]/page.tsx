@@ -92,16 +92,16 @@ export function generateMetadata({ params }) {
             />
           )}
           <h1 className="title font-semibold text-2xl tracking-tighter dark:text-white">
-            {post.metadata.title} {/* Apply dark:text-white here */}
+            {post.metadata.title} 
           </h1>
         </div>
-        <div className="flex justify-between items-center mt-2 mb-8 text-sm dark:text-white">
-          <p className="text-sm text-neutral-600 dark:text-neutral-400">
-            {formatDate(post.metadata.publishedAt)} {/* Apply dark:text-white here */}
+        <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+          <p className="text-sm text-white">
+            {formatDate(post.metadata.publishedAt)}
           </p>
-        </div>
+       </div>
         <article className="prose dark:text-white">
-          <CustomMDX source={post.content} /> {/* Apply dark:text-white here */}
+          <CustomMDX source={post.content} /> 
         </article>
       </section>
     );
