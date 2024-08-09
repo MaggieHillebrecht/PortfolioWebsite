@@ -128,7 +128,7 @@ body::before {
 }
 
 .prose {
-  color: white; 
+  color: white !important; 
 }
 
 .prose a {
