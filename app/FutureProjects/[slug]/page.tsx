@@ -100,7 +100,7 @@ export function generateMetadata({ params }) {
             {formatDate(post.metadata.publishedAt)}
           </p>
         </div>
-       <article className="text-white">
+       <article className="prose text-white">
           <CustomMDX source={post.content} />
         </article>
       </section>
