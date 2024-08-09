@@ -127,35 +127,13 @@ body::before {
   color: #f5f5f5; 
 }
 
-.prose {
-  color: white !important; 
-}
-
 .prose a {
   @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
   color: white;
 }
 
 .prose p {
-  color: white; 
-}
-
-.prose span,
-.prose li,
-.prose ul,
-.prose ol,
-.prose blockquote,
-.prose pre,
-.prose code,
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6,
-.prose strong,
-.prose em{
-  color: white; 
+  color: white !important; 
 }
 
 .prose strong,
