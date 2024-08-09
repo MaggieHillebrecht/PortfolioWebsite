@@ -147,6 +147,12 @@ body::before {
   color: white; 
 }
 
+.prose strong,
+.prose em,
+.prose blockquote {
+  color: white; /* Ensure strong, em, and blockquotes are white */
+}
+
 .prose .anchor:after {
   @apply text-neutral-300 dark:text-neutral-700;
   content: '#';
