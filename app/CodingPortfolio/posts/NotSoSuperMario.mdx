@@ -47,8 +47,9 @@ void OutFile::StartGame(string outputFile){
     int currentLevelPlayed = 0;
     bool isGameOver = false;
 
-    // Create the levels
-    for (int i = 0; i < amountOfLevels; ++i) {
+    //create the levels
+    for (int i = 0; i < amountOfLevels; ++i)
+    {
         m_levels[i] = level->CreateLevel(i);
         level->DisplayLevel(i, -1, -1);
         cout << endl;
@@ -56,8 +57,92 @@ void OutFile::StartGame(string outputFile){
 
     cout << "Mario is currently at (" << marioInWorld->getRowForMario() << ", "
         << marioInWorld->getColumnForMario() << ")" << endl;
+    /*The game itself is a while loop,
+    While Mario has lives and the game isn't over, mario will move around randomly in the level using move(),
+    the switch statement will check to see what mario has landed on and determine the next move and what other methods to call
+    from the Mario class.
+    */
+    while (marioInWorld->getMarioLives() > 0 && !isGameOver)
+    {
+        int rowOfMario = marioInWorld->getRowForMario();
+        int columnOfMario = marioInWorld->getColumnForMario();
+        level->DisplayLevel(currentLevelPlayed, marioInWorld->getRowForMario(), marioInWorld->getColumnForMario());
 
-    while (marioInWorld->getMarioLives() > 0 && !isGameOver) {
-        // Game loop logic here...
+       cout << endl << "Level: " << currentLevelPlayed << ""
+        << endl << "Mario is at (" << rowOfMario << ", " << columnOfMario << ")"
+        << endl << "Mario is at Power Level: " << marioInWorld->getPowerLevel()
+        << endl << "Mario has " << marioInWorld->getMarioLives() << " lives left"
+        << endl << "Mario has " << marioInWorld->getCoins() << " coins";
+
+        //tracks the char in the 2D array that mario is going to go on
+        char nextPosition = level->getMariosCurrentPosition(currentLevelPlayed, rowOfMario, columnOfMario);
+        switch (nextPosition)
+        {
+        case 'c':
+            cout << "\nMario found a coin!";
+            marioInWorld->FindsCoin();
+            level->MarioHasBeen(currentLevelPlayed, rowOfMario, columnOfMario);
+            break;
+        case 'm':
+            cout << "\nMario found a mushroom!";
+            marioInWorld->FindsMushroom();
+            level->MarioHasBeen(currentLevelPlayed, rowOfMario, columnOfMario);
+            break;
+        case 'g':
+            cout << "\nMario will fight a goomba";
+            if (marioInWorld->fightGoomba())
+            {
+                level->MarioHasBeen(currentLevelPlayed, rowOfMario, columnOfMario);
+            }
+            if (marioInWorld->emptyLives())
+            {
+                    cout << "Mario has lost D:";
+                    return;
+            }
+            break;
+        case 'k':
+            cout << "\nMario will fight a koopa";
+            if (marioInWorld->fightKoopa())
+            {
+                level->MarioHasBeen(currentLevelPlayed, rowOfMario, columnOfMario);
+            }
+            if (marioInWorld->emptyLives())
+            {
+                    cout << "Mario has lost the whole game D:";
+                    return;
+            }
+            break;  
+        case 'W':
+            cout << "\nMario has found a warp pipe!";
+            currentLevelPlayed++;
+            level->DisplayLevel(currentLevelPlayed, marioInWorld->getRowForMario(), marioInWorld->getColumnForMario());
+            break;  
+        case 'B':
+        // Mario will continue to fight bowser/boss once they have interacted in the last level to see if he wins of loses
+            cout << "\nMario is fighing the BOSS";
+            while (!marioInWorld->fightBowser())
+            {
+                if (marioInWorld->emptyLives())
+                {
+                    cout << "\nMario has lost D:";
+                    return;
+                } else if (marioInWorld->fightBowser()) //if fightBowser is true then mario wins
+                {
+                    cout << "\nMario has won the whole game!! :D";
+                    return;
+                }
+            }
+            break;                
+        default:
+            cout << "\nMario is on an empty space";
+            break;
+        }
+        
+        if (currentLevelPlayed != (amountOfLevels))
+        {        
+                cout << endl;
+                marioInWorld->MarioMove();
+        } else {
+            isGameOver = true;
+        }
     }
-}
