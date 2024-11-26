@@ -31,9 +31,9 @@ For me, writing the StartGame function was the hardest because I had to figure o
 
 ```cpp
 void OutFile::StartGame(string outputFile){
-    /*I got help from Kaye in regards to logging in the game into the output file.
-    Lines 57-63 and 158-159
-    I had originally tried using the file processing method used for A1, however
+    /*I got help from Kaye in regards to logging in the game into the
+    output file. Lines 57-63 and 158-159. I had originally tried using
+     the file processing method used for A1, however
     was very unsuccessful
     */
     ofstream loggerFile(outputFile);
@@ -41,8 +41,9 @@ void OutFile::StartGame(string outputFile){
         cerr << "Failed to open output file: " << outputFile << endl;
         return; // Exit function if file opening fails
     }
-    streambuf* coutToLogger = cout.rdbuf(); 
-    cout.rdbuf(loggerFile.rdbuf()); //redirects all couts to the logger file
+    streambuf* coutToLogger = cout.rdbuf();
+    //redirects all couts to the logger file 
+    cout.rdbuf(loggerFile.rdbuf()); 
 
     int currentLevelPlayed = 0;
     bool isGameOver = false;
@@ -55,12 +56,13 @@ void OutFile::StartGame(string outputFile){
         cout << endl;
     }
 
-    cout << "Mario is currently at (" << marioInWorld->getRowForMario() << ", "
-        << marioInWorld->getColumnForMario() << ")" << endl;
+    cout << "Mario is currently at (" << marioInWorld->getRowForMario()
+         << ", " << marioInWorld->getColumnForMario() << ")" << endl;
     /*The game itself is a while loop,
-    While Mario has lives and the game isn't over, mario will move around randomly in the level using move(),
-    the switch statement will check to see what mario has landed on and determine the next move and what other methods to call
-    from the Mario class.
+    While Mario has lives and the game isn't over, mario will move around 
+    randomly in the level using move(), the switch statement will check to 
+    see what mario has landed on and determine the next move and what other 
+    methods to call from the Mario class.
     */
     while (marioInWorld->getMarioLives() > 0 && !isGameOver)
     {

@@ -134,6 +134,9 @@ body::before {
 
 .prose p {
   color: white !important; 
+  white-space: normal; /* Default text wrapping */
+  word-wrap: break-word; /* Forces wrapping for long words */
+  overflow-wrap: break-word; /* Compatible with modern browsers */
 }
 
 .prose strong,
