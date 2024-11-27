@@ -5,7 +5,7 @@ summary: 'This game was created with the help of two other people :) It was fun 
 image: 'https://static.wixstatic.com/media/fde1e5_11990a5106874bef8c2ee155fda240ef~mv2.gif'
 ---
 
-# Producer #Programmer
+### #Producer #Programmer
 
 This game was created with the help of two other people :) It was fun to create something as a team and see it all come together. I worked on the hooking mechanics of the game, some UI stuff, the sound, and the inspectors of the fish.
 
@@ -23,7 +23,7 @@ The hook works when it collides with the mouth of the fish, then it will latch o
 
 However, I thought about also having the mechanic be once it collides with the boat, then `IsAtCatchingHeight = true`.
 
-What I would do differently now is to create an observer class for the hook since a lot of the logic is `if` statements and booleans.
+What I would do differently now is to create an observer class for the hook since a lot of the logic is if statements and booleans.
 
 ```cpp
 using System;
@@ -62,7 +62,8 @@ public class Hook : MonoBehaviour
             {
                 fish = other.gameObject.GetComponent<Fish>();
                 PutFishOnHook(other.gameObject.GetComponent<SpriteRenderer>(), 
-                    gameObject.GetComponent<SpriteRenderer>(), fish.SpriteOnLeftSide);
+                    gameObject.GetComponent<SpriteRenderer>(), 
+                    fish.SpriteOnLeftSide);
                 fish.StopMoving();
             }
             else
