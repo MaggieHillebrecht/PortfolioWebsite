@@ -16,4 +16,107 @@ In the future, we would like to incorporate more sound effects, and a luck of ch
 
 [Play it!](https://magpie0.itch.io/gothic-angular)
 
+## Some of my code
+The hook works when it collides with the mouth of the fish, then it will latch on. You can bring your mouse up and once it at catching height, then you are able to press space to catch.
+Each fish sprite is tagged so depending on what type of fish it is, is how many point you've earned. Some of the hardest parts to code exactly how I wanted it was when the fish hooks, it stops moving and positions itself right on the hook.
+The other was the figure out the catching height. When building this project for web, all calculations originally were extremely off. I found that Unity has a setting to size with what ever screen.
+However, I thought about also having the mechanic be once it collides with the boat, then IsAtCatchingHeight = true. 
+
+What I would do differently now is to create an observer class for the hook since a lot of the logic is if statements and booleans.
+'''cpp
+using System;
+using UnityEngine;
+
+
+public class Hook : MonoBehaviour
+{
+    public UI UI;
+    public FishBehavior FishBehavior;
+    private Fish fish;
+    private HookMovement hookMovement;
+    private bool hasFishOnHook = false;
+    
+    public void Update()
+    {
+        if (hasFishOnHook)
+        {
+            if (hookMovement.IsAtCatchingHeight())
+            {
+                TryToCatchFish();
+            }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (hasFishOnHook)
+            return;
+        //if each fish has their own script, will this override their randomness to hook?
+        if (other.gameObject.CompareTag("Fish") ||
+            other.gameObject.CompareTag("MediumFish") ||
+            other.gameObject.CompareTag("HardFish"))
+        {
+            hookMovement = GetComponent<HookMovement>();
+            if (FishBehavior.HookProbability() == true)
+            {
+                fish = other.gameObject.GetComponent<Fish>();
+                PutFishOnHook(other.gameObject.GetComponent<SpriteRenderer>(), 
+                    gameObject.GetComponent<SpriteRenderer>(), fish.SpriteOnLeftSide);
+                fish.StopMoving();
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
+
+    public void PutFishOnHook(SpriteRenderer one, SpriteRenderer two, bool isOnLeft)
+    {
+        hasFishOnHook = true;
+        
+        // Get the center position of SpriteRenderer two
+        Vector3 centerPosition = two.bounds.center;
+
+        // Position the pivot point of SpriteRenderer one at the center position of two
+        one.transform.position = centerPosition;
+
+        // Rotate one 90 degrees on the z-axis
+        if (fish.SpriteOnLeftSide)
+            one.transform.Rotate(Vector3.forward, 90f);
+        else
+            one.transform.Rotate(Vector3.forward, -90f);
+
+        // Parent one to two
+        one.transform.SetParent(two.transform);
+    }
+    
+    private void TryToCatchFish()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (fish.gameObject.CompareTag("MediumFish"))
+            { 
+                ScoreKeeper.Add(20);
+            } else if (fish.gameObject.CompareTag("HardFish"))
+            {
+                ScoreKeeper.Add(40);
+            }
+            else
+            {
+                ScoreKeeper.Add(10);
+            }
+            Destroy(fish.gameObject);
+            UI.ShowScore(ScoreKeeper.Get());
+            EmptyHook();
+        }
+    }
+    
+    
+    private void EmptyHook()
+    {
+        hasFishOnHook = false;
+    }
+}
+
 #Producer #Programmer
