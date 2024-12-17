@@ -51,65 +51,79 @@ I came across SoulStryder210's artwork and thought it was the perfect canvas to 
 
 My code is extremely straightforward. I tried to be as organized as possible with it. In previous projects, my code was filled with `setActive` true and false, but I found that I can do that all in the inspector (which is life-changing!). Instead, the UI manager controls the buttons on the menu screen, and depending on whether they are playing or not, states get changed. This also controls the pause menu buttons and all of the back buttons.
 
-### UI Manager
+### Audio Manager
+Most of my scripts look a little like this, very short and to the point. My UI Manager is the only one that isn't a singleton although it could have been as it is used throughout different scenes.
 
 ```csharp
-using UnityEngine;
-
-public class UIManager : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-    public GameController GameController;
+    public static AudioManager Instance { get; private set; }
 
-    public void OnStartButtonClicked()
+    public AudioSource musicSource; 
+
+    public AudioClip backgroundMusic;
+    public AudioClip winSound; 
+    public AudioClip loseSound; 
+
+    private void Awake()
     {
-        LevelManager.Instance.LoadLevel("Level 1");
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject); 
+        //keep this object between scene so the background stays
     }
 
-    public void OnLevelOneClicked()
+    private void Start()
     {
-        LevelManager.Instance.LoadLevel("Level 1");
-        if (GameController.GetGameState() == GameController.GameStates.GameLost)
+        PlayBackgroundMusic();
+    }
+    
+    private IEnumerator StopMusicCoroutine(float seconds)
+    {
+        //stop the music
+        musicSource.Stop();
+
+        yield return new WaitForSeconds(seconds);
+
+        // Resume the music
+        musicSource.Play();
+    }
+    
+    public void PlayBackgroundMusic()
+    {
+        if (musicSource != null && backgroundMusic != null)
         {
-            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+            musicSource.clip = backgroundMusic;
+            musicSource.loop = true;
+            musicSource.Play();
         }
     }
-
-    public void OnLevelTwoClicked()
+    
+    public void StopBackgroundMusic()
     {
-        LevelManager.Instance.LoadLevel("Level 2");
-        if (GameController.GetGameState() == GameController.GameStates.GameLost)
+        if (musicSource != null && musicSource.isPlaying)
         {
-            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+            StartCoroutine(StopMusicCoroutine(4f));
         }
     }
-
-    public void OnMenuButtonClick()
+    
+    public void PlayWinSound()
     {
-        if (GameController.GetGameState() == GameController.GameStates.GameLost ||
-            GameController.GetGameState() == GameController.GameStates.GameWon)
+        if (musicSource != null && winSound != null)
         {
-            GameController.StateUpdate(GameController.GameStates.GamePlaying);
-        }
-        LevelManager.Instance.LoadLevel("MenuScreen");
-    }
-
-    public void OnContinueButtonClick()
-    {
-        if (GameController.GetGameState() == GameController.GameStates.GamePaused)
-        {
-            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+            musicSource.PlayOneShot(winSound);
         }
     }
-
-    public void OnPauseButtonClick()
+    
+    public void PlayLoseSound()
     {
-        if (GameController.GetGameState() == GameController.GameStates.GamePlaying)
+        if (musicSource != null && loseSound != null)
         {
-            GameController.StateUpdate(GameController.GameStates.GamePaused);
+            musicSource.PlayOneShot(loseSound);
         }
     }
 }
-
-
-The Audio manager is in a similar way but it is a singleton so that the background music and other sc
-

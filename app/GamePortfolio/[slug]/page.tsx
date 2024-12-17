@@ -84,17 +84,17 @@ export default function Blog({ params }) {
       />
       {/* Adding the image next to the title within the post */}
       <div className="title-container flex items-center">
-      {post.metadata.image && (
-        <img
-          src={post.metadata.image}
-          alt="Image"
-          className="title-image w-70 h-46 object-cover mr-4"
-        />
-      )}
-      {/* Getting the title of the post */}
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
+        {post.metadata.image && (
+          <img
+            src={post.metadata.image}
+            alt="Image"
+            className="title-image w-48 h-32 object-cover mr-4"
+          />
+        )}
+        {/* Getting the title of the post */}
+        <h1 className="title font-semibold text-2xl tracking-tighter">
+          {post.metadata.title}
+        </h1>
       </div>
       {/* Getting the date of the post */}
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
