@@ -2,7 +2,7 @@
 title: 'Not So Super Mario'
 publishedAt: '2024-12-17'
 summary: 'Created the UI, implemented the Audio, and created the achievement system for my teams Unity Programming Final project'
-image: '<img src="https://static.wixstatic.com/media/fde1e5_001e19ef47794b8fba26f98b6c032f53~mv2.png/v1/fill/w_600,h_338,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Not%20so%20Super%20Mario%20Starting%20Screen.png" alt="Not So Super Mario" width="400"/>'
+image: <img src="https://static.wixstatic.com/media/fde1e5_001e19ef47794b8fba26f98b6c032f53~mv2.png/v1/fill/w_600,h_338,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Not%20so%20Super%20Mario%20Starting%20Screen.png" alt="Not So Super Mario" width="400"/>
 ---
 ### #UI #QA #UIArtwork #Audio
 Me and my dream team put together this project within two weeks. Origianlly the assignment was to implement one design pattern per person if working in a group. We wanted to implement all of them since we were the largest group and it would help us understand all the implementation being put together. 
@@ -23,6 +23,8 @@ So I did just that for the instructions page of this game. I worked hard to cond
 ![instructions for corgi](https://static.wixstatic.com/media/fde1e5_fdc1b164aa9c49edacd38c93bb591db7~mv2.png/v1/fill/w_600,h_338,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/InstructionsPart1Screen.png)
 ![Instruction for super](https://static.wixstatic.com/media/fde1e5_ea830cb28fb54bdc9ceb1031d8c38c6b~mv2.png/v1/fill/w_600,h_400,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fde1e5_ea830cb28fb54bdc9ceb1031d8c38c6b~mv2.png)
 
+As for the menu screen, in pre-production I had the buttons not have any text with them. Looking like what you see below.
+![beta mario screen](https://static.wixstatic.com/media/fde1e5_cf11c740e49546d59acb416ed727e7e8~mv2.gif)
 I quickly realized that this didn't explain anything. Although it might be a little fun to try and find the buttons and figure out what they do. However, I tried to think as if I had never played a game in my life, and then it really hit me that this wasn't clarity at all. 
 
 ## Art
@@ -35,4 +37,65 @@ I came across SoulStryder210's artwork and thought it was the perfect canvas to 
 ![Beta how to play screen](https://static.wixstatic.com/media/fde1e5_d0269b42371f4a1c96c0ff8cc08324d1~mv2.png/v1/fill/w_600,h_337,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/fde1e5_d0269b42371f4a1c96c0ff8cc08324d1~mv2.png)
 
 ![Beta pause screen](https://static.wixstatic.com/media/fde1e5_a87c56f78c054a4784483b717c965f54~mv2.png/v1/fill/w_303,h_238,al_c,q_85,enc_avif,quality_auto/fde1e5_a87c56f78c054a4784483b717c965f54~mv2.png)
+
+## Code 
+My code is extremely straight forward. I tried to be as organized as possible with it. In previous projects my code was filled with setActive true and false but I found that I can do that all in the inspector (which is life changing). Instead, the UI manager controls the buttons on the menu screen and depending on if they are playing or not, states get changed. This also controls the pause menu buttons and all of the back buttons.
+UI Manager
+'''csharp
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    public GameController GameController;
+    public void OnStartButtonClicked()
+    {
+        LevelManager.Instance.LoadLevel("Level 1");
+    }
+
+    public void OnLevelOneClicked()
+    {
+        LevelManager.Instance.LoadLevel("Level 1");
+        if (GameController.GetGameState() == GameController.GameStates.GameLost)
+        {
+            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+        }
+    }
+
+    public void OnLevelTwoClicked()
+    {
+        LevelManager.Instance.LoadLevel("Level 2");
+        if (GameController.GetGameState() == GameController.GameStates.GameLost)
+        {
+            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+        }
+    }
+
+    public void OnMenuButtonClick()
+    {
+        if (GameController.GetGameState() == GameController.GameStates.GameLost ||
+            GameController.GetGameState() == GameController.GameStates.GameWon)
+        {
+            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+        }
+        LevelManager.Instance.LoadLevel("MenuScreen");
+    }
+
+    public void OnContinueButtonClick()
+    {
+        if (GameController.GetGameState() == GameController.GameStates.GamePaused)
+        {
+            GameController.StateUpdate(GameController.GameStates.GamePlaying);
+        }
+    }
+
+    public void OnPauseButtonClick()
+    {
+        if (GameController.GetGameState() == GameController.GameStates.GamePlaying)
+        {
+            GameController.StateUpdate(GameController.GameStates.GamePaused);
+        }
+    }
+}
+
+The Audio manager is in a similar way but it is a singleton so that the background music and other sc
 
